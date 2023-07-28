@@ -1,0 +1,13 @@
+class Solution:
+    def matrixReshape(self, mat: List[List[int]], r: int, c: int) -> List[List[int]]:
+        mat_length = len(mat) * len(mat[0])
+        if r*c != mat_length:
+            return mat
+        new_arr, output = [], []
+        for i in range(len(mat)):
+            new_arr.extend(mat[i])
+        j = c
+        while j <= len(new_arr):
+            output.append(new_arr[j-c:j])
+            j += c
+        return output
