@@ -1,0 +1,8 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        final_mat = matrix.copy()
+        for i in range(len(final_mat[0])):
+            curr_mat = []
+            for j in range(len(final_mat)):
+                curr_mat.append(final_mat[j][i])
+            matrix[i] = curr_mat[::-1]
