@@ -1,0 +1,25 @@
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        # check all the rows
+        for i in range(len(board)):
+            numbers = [int(num) for num in board[i] if num != '.']
+            if len(set(numbers)) != len(numbers): return False
+        # check for all the cols
+        for i in range(len(board[0])):
+            numbers = [int(board[j][i]) for j in range(len(board)) if board[j][i] != '.']
+            if len(set(numbers)) != len(numbers): return False
+            
+        #check for smaller squares
+        for i in range(3):
+            i *= 3
+            temp = board[i:i+3]
+
+            for j in range(3):
+                j *= 3
+                arr = []
+                for num in temp:
+                    if num != ".":
+                        arr.extend(num[j:j+3])
+                arr = [int(num) for num in arr if num != "."]
+                if len(set(arr)) != len(arr): return False
+        return True
