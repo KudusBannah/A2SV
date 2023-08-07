@@ -1,0 +1,31 @@
+from collections import Counter
+ 
+inp = int(input().split()[0])
+grid = []
+for i in range(inp):
+    row = list(map(str, input()))
+    grid.append(row)
+ 
+cancelled = set()
+col, row = 0, 0
+while col < len(grid[0]):             #check the cols
+    temp = [grid[j][col] for j in range(len(grid))]
+    counter = Counter(temp)
+    for j in range(len(grid)):
+        if counter[grid[j][col]] > 1:
+            cancelled.add((j,col))
+    col += 1
+ 
+while row < len(grid):            #check the rows
+    counter = Counter(grid[row])
+    for j in range(len(grid[0])):
+        if counter[grid[row][j]] > 1:
+            cancelled.add((row,j)) 
+    row += 1
+ 
+final = []
+for i in range(len(grid)):
+    for j in range(len(grid[0])):
+        if (i,j) not in cancelled:
+            final.append(grid[i][j])
+print("".join(final))
