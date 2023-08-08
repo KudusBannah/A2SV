@@ -1,0 +1,31 @@
+class Solution:
+    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        answer = [row[:] for row in mat]
+
+        def cal_sum(top_left, bottom_right):
+            sum_ = 0
+            for i in range(top_left[0], bottom_right[0] + 1):
+                for j in range(top_left[1], bottom_right[1] + 1):
+                    sum_ += mat[i][j]
+            return sum_
+
+        for i in range(len(mat)):
+            for j in range(len(mat[0])):
+                top = i - k
+                while top < 0:
+                    top += 1
+
+                bottom = i + k
+                while bottom > len(mat) - 1:
+                    bottom -= 1
+
+                left = j - k
+                while left < 0:
+                    left += 1
+                
+                right = j + k
+                while right > len(mat[0]) - 1:
+                    right -= 1
+                
+                answer[i][j] = cal_sum((top, left), (bottom, right))
+        return answer
