@@ -11,21 +11,10 @@ class Solution:
 
         for i in range(len(mat)):
             for j in range(len(mat[0])):
-                top = i - k
-                while top < 0:
-                    top += 1
-
-                bottom = i + k
-                while bottom > len(mat) - 1:
-                    bottom -= 1
-
-                left = j - k
-                while left < 0:
-                    left += 1
-                
-                right = j + k
-                while right > len(mat[0]) - 1:
-                    right -= 1
+                top = max(0, i - k)
+                bottom = min(len(mat) - 1, i + k)
+                left = max(0, j - k)
+                right = min(len(mat[0]) - 1,j + k)
                 
                 answer[i][j] = cal_sum((top, left), (bottom, right))
         return answer
