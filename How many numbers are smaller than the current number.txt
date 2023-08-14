@@ -1,0 +1,12 @@
+class Solution:
+    def smallerNumbersThanCurrent(self, nums: List[int]) -> List[int]:
+        f_arr = [0] * (max(nums)+1)
+        output = []
+        for i in range(len(nums)):
+            el = nums[i]
+            f_arr[el] += 1
+        
+        for num in nums:
+            less_than = sum(f_arr[:num])
+            output.append(less_than)
+        return output
