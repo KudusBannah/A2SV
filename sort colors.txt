@@ -1,0 +1,13 @@
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        f_arr = [0] * 3
+        for i in range(len(nums)):
+            el = nums[i]
+            f_arr[el] += 1
+
+        current = 0
+        for i in range(3):
+            el = f_arr[i]
+            for j in range(current, current+el):
+                nums[j] = i
+            current += el
