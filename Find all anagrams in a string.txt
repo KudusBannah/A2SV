@@ -1,0 +1,17 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        N, k = len(s), len(p)
+        start_indices = []
+
+        p_counter = Counter(p)
+        curr_s_counter = Counter(s[:k])
+        if curr_s_counter == p_counter:
+            start_indices.append(0)
+
+        for l in range(N-k):
+            r = l + k
+            curr_s_counter[s[l]] -= 1
+            curr_s_counter[s[r]] += 1
+            if curr_s_counter == p_counter:
+                start_indices.append(l+1)
+        return start_indices
