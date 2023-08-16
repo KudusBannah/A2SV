@@ -1,0 +1,18 @@
+class Solution:
+    def largestNumber(self, nums: List[int]) -> str:
+        if sum(nums) == 0:
+            return "0"
+        nums = list(map(str, nums))
+
+        i = 0
+        N = len(nums)
+        while i < N - 1:
+            max_ = i
+            for j in range(i+1, N):
+                if int(nums[j][0]) > int(nums[max_][0]):
+                    nums[max_], nums[j] = nums[j], nums[max_]
+                elif int(nums[j][0]) == int(nums[max_][0]):
+                    if int(nums[j]+nums[max_]) > int(nums[max_]+nums[j]):
+                        nums[max_], nums[j] = nums[j], nums[max_]
+            i += 1
+        return "".join(nums)
