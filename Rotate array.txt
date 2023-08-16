@@ -1,0 +1,24 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        # temp = [num for num in nums]
+        # N = len(nums)
+        # for i in range(N):
+        #     nums[(i+k)%N] = temp[i]
+        # return nums
+        # THE ABOVE IS A SIMPLE SOLN BUT 0(N) SPACE
+
+        # BELOW IS THE CONSTANT SPACE SOLUTION
+        k = k % len(nums)
+        nums.reverse()
+        l, r = 0, k-1
+        while l <= r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1
+
+        l, r = k, len(nums)-1
+        while l <= r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l += 1
+            r -= 1
+        return nums
