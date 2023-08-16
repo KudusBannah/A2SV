@@ -1,0 +1,24 @@
+class Solution:
+    def pancakeSort(self, arr: List[int]) -> List[int]:
+        def reverse_subarray(r):
+            l = 0
+            while l <= r:
+                arr[l], arr[r] = arr[r], arr[l]
+                l += 1
+                r -= 1
+
+        curr = len(arr) - 1
+        output = []
+        while curr != 0:
+            max_ = 0
+            for i in range(curr+1):
+                if arr[i] > arr[max_]:
+                    max_ = i
+            
+            output.append(max_+1)
+            output.append(curr+1)
+            # Reversing the subarray
+            reverse_subarray(max_)
+            reverse_subarray(curr)
+            curr -= 1
+        return output
