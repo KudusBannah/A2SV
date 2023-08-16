@@ -1,0 +1,9 @@
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        curr, i = 0, 0
+        while i < len(nums):
+            if nums[i] != 0:
+                nums[i], nums[curr] = nums[curr], nums[i]
+                curr += 1
+            i += 1
+        return nums
