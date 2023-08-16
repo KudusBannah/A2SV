@@ -1,0 +1,12 @@
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        max_coins = 0
+        piles.sort()
+        l, r = 0, len(piles) - 1
+
+        while l < r:
+            l += 1
+            max_coins += piles[r-1]
+            r -= 2
+        
+        return max_coins
