@@ -1,0 +1,15 @@
+def sort(arr):
+    arr.sort()
+    l, r = 0, len(arr)-1
+    max_cost = 0
+    while l < r:
+        max_cost += arr[r] - arr[l]
+        l += 1
+        r -= 1
+    return max_cost
+ 
+for i in range(int(input())):
+    int(input())
+    temp = input().split()
+    arr = [int(item) for item in temp]
+    print(sort(arr))
