@@ -1,0 +1,14 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        N, k = len(s2), len(s1)
+        s1_counter = Counter(s1)
+        curr_counter = Counter(s2[:k])
+        if curr_counter == s1_counter:
+            return True
+        for i in range(0, N-k):
+            r = i + k
+            curr_counter[s2[r]] += 1
+            curr_counter[s2[i]] -= 1
+            if curr_counter == s1_counter:
+                return True
+        return False
