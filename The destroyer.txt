@@ -1,0 +1,20 @@
+for i in range(int(input())):
+    n = int(input())
+    robots = list(map(int, input().split()))
+    robots.sort()
+
+    found, lines = True, []
+    for i in range(len(robots)):
+        if robots[i] == 0:
+            new_line = [0]
+            lines.append(new_line)
+        else:
+            for j in range(len(lines)):
+                if len(lines[j]) == robots[i]:
+                    lines[j].append(robots[i])
+                    break
+            else:
+                print("NO")
+                found = False
+                break
+    if found : print("YES")
