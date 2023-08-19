@@ -1,0 +1,13 @@
+N = int(input())
+nums = list(map(int, input().split()))
+sum_ = sum(nums)
+
+ans, N = [], len(nums)
+for i in range(N):
+    curr_sum = sum_ - nums[i]
+    if curr_sum/(N-1) == nums[i]:
+        ans.append(i+1)
+
+print(len(ans))
+ans = " ".join(list(map(str, ans)))
+print(ans)
