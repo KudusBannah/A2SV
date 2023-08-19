@@ -1,0 +1,11 @@
+def CubeSorting():
+    n = int(input())
+    cubes = list(map(int,input().split()))
+    for i in range(n-1):
+        if cubes[i] <= cubes[i+1]:
+            return ("YES")
+    return("NO")
+
+t = int(input())
+for _ in range(t):
+    print(CubeSorting())
