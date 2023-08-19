@@ -1,0 +1,19 @@
+for i in range(int(input())):
+    r, c = map(int, input().split())
+    grid = []
+    for i in range(r):
+        temp = [c for c in input()]
+        grid.append(temp)
+    
+    for i in range(r - 2, -1, -1):      #iterate through the grid in reverse
+        for j in range(len(grid[i])):   #iterate through the col of the curr row
+            if grid[i][j] == "*":
+                temp = i
+                while temp < r and grid[temp+1][j] == ".":
+                    temp += 1
+                    if temp == r - 1: break
+                grid[i][j] = "."
+                grid[temp][j] = "*"
+
+    for row in grid:
+        print("".join(row))
