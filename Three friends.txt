@@ -1,0 +1,20 @@
+for i in range(int(input())):
+    arr = list(map(int, input().split()))
+    arr.sort()
+    a, b, c = arr[0], arr[1], arr[2]
+
+    if a < c:
+        a += 1
+
+    if b == c and b > a:
+        b -= 1
+        c -= 1
+    
+    if b < a and b < c:
+        b += 1
+    if c > b:
+        c -= 1
+
+    distance = abs(a-b) + abs(a-c) + abs(b-c)
+
+    print(f"{distance}")
