@@ -1,16 +1,14 @@
 class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
-        prefix_product = [1] * len(nums)
-        postfix_product = [1] * len(nums)
-        prefix_product[1], postfix_product[-2] = nums[0], nums[-1]
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        for i in range(1, len(nums)):
+            nums[i] += nums[i-1]
 
-        for i in range(1, len(nums)-1):
-            prefix_product[i+1] = prefix_product[i] * nums[i]
+        count = 0
+        curr_window = {0:1}
+        for num in nums:
+            if (num - k) in curr_window:
+                count += curr_window[num - k]
 
-        for i in range(len(nums)-2, 0, -1):
-            postfix_product[i-1] = postfix_product[i] * nums[i]
-
-        for i in range(len(nums)):
-            nums[i] = postfix_product[i] * prefix_product[i]
-
-        return nums
+            if num in curr_window: curr_window[num] += 1
+            else: curr_window[num] = 1
+        return count
