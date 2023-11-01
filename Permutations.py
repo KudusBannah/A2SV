@@ -17,8 +17,6 @@ class Solution:
                 search(state, solutions)
                 state.pop()
 
-        
-
         solutions = []
         state = []
         search(state, solutions)
