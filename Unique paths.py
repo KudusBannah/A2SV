@@ -5,7 +5,7 @@ class Solution:
         def dp(r, c):
             if (r, c) == (m-1, n-1):
                 return 1
-            if min(r, c) < 0 or r >= m or c >= n:
+            if r == m or c == n:
                 return 0
 
             if (r, c) not in memo:
@@ -14,5 +14,3 @@ class Solution:
             return memo[(r, c)]
 
         return dp(0, 0)
-            
-        
