@@ -14,3 +14,5 @@ class Solution:
             return memo[(idx, flag)]
 
         if len(nums) < 3:
+            return max(nums)
+        return max(nums[0] + dp(2, True), dp(1, False))
