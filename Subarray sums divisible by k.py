@@ -10,5 +10,7 @@ class Solution:
             if complement in my_dict:
                 count += my_dict[complement]
                 my_dict[complement] += 1
-            else: my_dict[complement] = 1
+            else:
+                my_dict[complement] = 1
+
         return count
